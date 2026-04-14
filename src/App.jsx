@@ -1,4 +1,4 @@
-'
+
 import './App.css'
 
 function App() {
@@ -6,7 +6,8 @@ function App() {
   return (
     <>
      <div>
-      <h1>Welcome to React</h1>
+      <h1 className='bg-amber-400'>Welcome to React</h1>
+      <button className='btn btn-primary'>add</button>
      </div>
     </>
   )
