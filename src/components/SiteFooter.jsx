@@ -15,7 +15,7 @@ const socialIcons = [
   },
 ];
 
-export default function Footer() {
+export default function SiteFooter() {
   return (
     <footer className="mt-16 bg-[#285846] text-white">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-4 py-14 text-center sm:px-6 lg:px-8">
@@ -55,4 +55,3 @@ export default function Footer() {
     </footer>
   );
 }
-

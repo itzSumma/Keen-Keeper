@@ -8,6 +8,34 @@ const STATUS_META = {
   "almost due": "bg-amber-100 text-amber-700",
 };
 
+function getAvatarSourceSet(url) {
+  try {
+    const parsed = new URL(url);
+
+    if (!parsed.hostname.includes("unsplash.com")) {
+      return { src: url, srcSet: undefined };
+    }
+
+    const oneX = new URL(parsed);
+    oneX.searchParams.set("fit", "crop");
+    oneX.searchParams.set("crop", "faces");
+    oneX.searchParams.set("w", "128");
+    oneX.searchParams.set("h", "128");
+    oneX.searchParams.set("q", "90");
+    oneX.searchParams.set("dpr", "1");
+
+    const twoX = new URL(oneX);
+    twoX.searchParams.set("dpr", "2");
+
+    return {
+      src: oneX.toString(),
+      srcSet: `${oneX.toString()} 1x, ${twoX.toString()} 2x`,
+    };
+  } catch {
+    return { src: url, srcSet: undefined };
+  }
+}
+
 function Tag({ children }) {
   return (
     <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700">
@@ -29,12 +57,18 @@ function StatusPill({ status }) {
 }
 
 export default function FriendCard({ friend }) {
+  const avatar = getAvatarSourceSet(friend.picture);
+
   return (
     <article className="rounded-lg border border-slate-200 bg-white px-5 py-6 text-center shadow-sm">
       <img
-        src={friend.picture}
+        src={avatar.src}
+        srcSet={avatar.srcSet}
+        sizes="64px"
         alt={friend.name}
         className="mx-auto h-16 w-16 rounded-full object-cover"
+        loading="lazy"
+        decoding="async"
       />
       <h3 className="mt-4 text-base font-semibold text-slate-800">
         {friend.name}
