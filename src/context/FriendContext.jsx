@@ -37,11 +37,12 @@ function normalizeFriend(friend) {
 
 export function FriendProvider({ children }) {
   const [friends, setFriends] = useState(() => getFriendsFromLocalDB().map(normalizeFriend));
+  const [selectedFriendId, setSelectedFriendId] = useState(null);
   const [timeline, setTimeline] = useState(() => {
     const stored = getTimelineFromLocalDB();
     return stored.length > 0 ? stored : SEED_TIMELINE;
   });
-  const [isLoading, setIsLoading] = useState(friends.length === 0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -144,6 +145,8 @@ export function FriendProvider({ children }) {
         timeline: sortedTimeline,
         interactionCounts,
         addInteraction,
+        selectedFriendId,
+        setSelectedFriendId,
       }}
     >
       {children}

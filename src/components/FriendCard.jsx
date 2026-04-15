@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { useFriendContext } from "../context/FriendContext.jsx";
 
 const STATUS_META = {
   overdue: "bg-rose-100 text-rose-600",
@@ -44,10 +45,12 @@ function Tag({ children }) {
 
 export default function FriendCard({ friend }) {
   const avatar = getAvatarSourceSet(friend.picture);
+  const { setSelectedFriendId } = useFriendContext();
 
   return (
     <Link
       to={`/friends/${friend.id}`}
+      onClick={() => setSelectedFriendId(friend.id)}
       className="block rounded-lg border border-slate-200 bg-white px-5 py-6 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
       <img

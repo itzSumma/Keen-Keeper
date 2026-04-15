@@ -3,13 +3,20 @@ import FriendCard from "./FriendCard.jsx";
 
 function LoadingGrid() {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      {Array.from({ length: 8 }).map((_, index) => (
-        <div
-          key={index}
-          className="h-56 animate-pulse rounded-lg border border-slate-200 bg-white"
-        />
-      ))}
+    <div className="space-y-5">
+      <div className="flex items-center justify-center gap-2 text-sm font-medium text-[#285846]">
+        <span className="loading loading-spinner loading-md text-[#285846]" />
+        <span>Loading friends...</span>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {Array.from({ length: 8 }).map((_, index) => (
+          <div
+            key={index}
+            className="h-56 animate-pulse rounded-lg border border-slate-200 bg-white"
+          />
+        ))}
+      </div>
     </div>
   );
 }
