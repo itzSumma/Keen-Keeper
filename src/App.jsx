@@ -1,16 +1,11 @@
+import { RouterProvider } from "react-router";
+import { FriendProvider } from "./context/FriendContext.jsx";
+import { router } from "./routes/Routes.jsx";
 
-import './App.css'
-
-function App() {
- 
+export default function App() {
   return (
-    <>
-     <div>
-      <h1 className='bg-amber-400'>Welcome to React</h1>
-      <button className='btn btn-primary'>add</button>
-     </div>
-    </>
-  )
+    <FriendProvider>
+      <RouterProvider router={router} />
+    </FriendProvider>
+  );
 }
-
-export default App

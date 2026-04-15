@@ -1,16 +1,70 @@
-# React + Vite
+# KeenKeeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+KeenKeeper is a React-based friendship dashboard styled to match the provided screenshot. The codebase now follows a cleaner "Book Vibe"-style structure with separate routing, layout, context, pages, shared components, and local storage utilities.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Screenshot-matched home page with navbar, hero section, stats cards, friends grid, and footer
+- Separate `Homepage`, `Timeline`, `Stats`, and `ErrorPage` routes
+- Global friend data handled through context
+- Friend data cached in `localStorage`
+- Responsive layout with Tailwind CSS and DaisyUI enabled
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- React Router 7
+- Tailwind CSS 4
+- DaisyUI
+- Vite
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+src/
+  App.jsx
+  main.jsx
+  index.css
+  components/
+    AllFriends.jsx
+    Banner.jsx
+    Footer.jsx
+    FriendCard.jsx
+    Icon.jsx
+    Navbar.jsx
+    SummaryCards.jsx
+  context/
+    FriendContext.jsx
+  layouts/
+    MainLayout.jsx
+  pages/
+    ErrorPage.jsx
+    Homepage.jsx
+    StatsPage.jsx
+    TimelinePage.jsx
+  routes/
+    Routes.jsx
+  utils/
+    localDB.js
+public/
+  friends.json
+```
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Notes
+
+- Routing is handled from `src/routes/Routes.jsx`.
+- The app is wrapped with `FriendProvider` in `src/main.jsx`.
+- Friend data is fetched from `public/friends.json` and cached with `src/utils/localDB.js`.

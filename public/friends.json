@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "David Kim",
+    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 22,
+    "tag": "WORK",
+    "status": "almost due"
+  },
+  {
+    "id": 2,
+    "name": "Emma Wilson",
+    "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 15,
+    "tag": "FAMILY",
+    "status": "overdue"
+  },
+  {
+    "id": 3,
+    "name": "Lisa Nakamura",
+    "picture": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 12,
+    "tag": "WORK",
+    "status": "overdue"
+  },
+  {
+    "id": 4,
+    "name": "James Wright",
+    "picture": "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 7,
+    "tag": "TRAVEL",
+    "status": "family"
+  },
+  {
+    "id": 5,
+    "name": "David Kim",
+    "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 24,
+    "tag": "WORK",
+    "status": "overdue"
+  },
+  {
+    "id": 6,
+    "name": "Emma Wilson",
+    "picture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 10,
+    "tag": "FAMILY",
+    "status": "on-track"
+  },
+  {
+    "id": 7,
+    "name": "Lisa Nakamura",
+    "picture": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 18,
+    "tag": "WORK",
+    "status": "on-track"
+  },
+  {
+    "id": 8,
+    "name": "James Wright",
+    "picture": "https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 8,
+    "tag": "TRAVEL",
+    "status": "friend"
+  },
+  {
+    "id": 9,
+    "name": "David Kim",
+    "picture": "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 20,
+    "tag": "WORK",
+    "status": "almost due"
+  },
+  {
+    "id": 10,
+    "name": "Emma Wilson",
+    "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 17,
+    "tag": "FAMILY",
+    "status": "overdue"
+  },
+  {
+    "id": 11,
+    "name": "Lisa Nakamura",
+    "picture": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 16,
+    "tag": "WORK",
+    "status": "overdue"
+  },
+  {
+    "id": 12,
+    "name": "James Wright",
+    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+    "days_since_contact": 6,
+    "tag": "TRAVEL",
+    "status": "on-track"
+  }
+]
