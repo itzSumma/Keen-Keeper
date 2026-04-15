@@ -37,7 +37,7 @@ function normalizeFriend(friend) {
 
 export function FriendProvider({ children }) {
   const [friends, setFriends] = useState(() => getFriendsFromLocalDB().map(normalizeFriend));
-  const [selectedFriendId, setSelectedFriendId] = useState(null);
+  const [selectedFriendIds, setSelectedFriendIds] = useState([]);
   const [timeline, setTimeline] = useState(() => {
     const stored = getTimelineFromLocalDB();
     return stored.length > 0 ? stored : SEED_TIMELINE;
@@ -136,6 +136,12 @@ export function FriendProvider({ children }) {
     return newEntry;
   }
 
+  function addSelectedFriendId(friendId) {
+    setSelectedFriendIds((current) =>
+      current.includes(friendId) ? current : [...current, friendId],
+    );
+  }
+
   return (
     <FriendContext.Provider
       value={{
@@ -145,8 +151,8 @@ export function FriendProvider({ children }) {
         timeline: sortedTimeline,
         interactionCounts,
         addInteraction,
-        selectedFriendId,
-        setSelectedFriendId,
+        selectedFriendIds,
+        addSelectedFriendId,
       }}
     >
       {children}

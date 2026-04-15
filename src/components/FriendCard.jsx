@@ -45,12 +45,12 @@ function Tag({ children }) {
 
 export default function FriendCard({ friend }) {
   const avatar = getAvatarSourceSet(friend.picture);
-  const { setSelectedFriendId } = useFriendContext();
+  const { addSelectedFriendId } = useFriendContext();
 
   return (
     <Link
       to={`/friends/${friend.id}`}
-      onClick={() => setSelectedFriendId(friend.id)}
+      onClick={() => addSelectedFriendId(friend.id)}
       className="block rounded-lg border border-slate-200 bg-white px-5 py-6 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
       <img

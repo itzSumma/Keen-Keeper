@@ -13,28 +13,52 @@ function formatDate(value) {
   if (Number.isNaN(date.valueOf())) {
     return value;
   }
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "UTC",
+    timeZoneName: "short",
   });
 }
 
 export default function TimelinePage() {
   const [filter, setFilter] = useState("all");
-  const { timeline } = useFriendContext();
+  const { timeline, friends, selectedFriendIds } = useFriendContext();
 
   const filteredEvents = useMemo(() => {
+    const selectedOnly =
+      selectedFriendIds.length > 0
+        ? timeline.filter((event) => selectedFriendIds.includes(event.friendId))
+        : timeline;
+
     if (filter === "all") {
-      return timeline;
+      return selectedOnly;
     }
 
-    return timeline.filter((event) => event.type === filter);
-  }, [filter, timeline]);
+    return selectedOnly.filter((event) => event.type === filter);
+  }, [filter, timeline, selectedFriendIds]);
+
+  const selectedFriendNames = useMemo(
+    () =>
+      friends
+        .filter((item) => selectedFriendIds.includes(item.id))
+        .map((item) => item.name),
+    [friends, selectedFriendIds],
+  );
 
   return (
     <section className="rounded-md border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
       <h1 className="text-5xl font-semibold tracking-tight text-slate-800">Timeline</h1>
+      {selectedFriendNames.length > 0 ? (
+        <p className="mt-2 text-sm text-slate-500">
+          Showing interactions for{" "}
+          <span className="font-semibold">{selectedFriendNames.join(", ")}</span>
+        </p>
+      ) : null}
 
       <div className="mt-5">
         <label htmlFor="timeline-filter" className="sr-only">
@@ -54,6 +78,11 @@ export default function TimelinePage() {
       </div>
 
       <div className="mt-4 space-y-2.5">
+        {filteredEvents.length === 0 ? (
+          <p className="rounded-md border border-slate-200 bg-slate-50 px-4 py-6 text-sm text-slate-500">
+            No Call/Text/Video entries found for the current selection.
+          </p>
+        ) : null}
         {filteredEvents.map((event) => (
           <article
             key={event.id}

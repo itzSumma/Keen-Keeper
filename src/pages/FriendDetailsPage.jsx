@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useParams } from "react-router";
 import Icon from "../components/Icon.jsx";
 import { useFriendContext } from "../context/FriendContext.jsx";
@@ -76,13 +76,20 @@ function UtilityButton({ label, icon, danger = false }) {
 
 export default function FriendDetailsPage() {
   const params = useParams();
-  const { friends, addInteraction } = useFriendContext();
+  const { friends, addInteraction, addSelectedFriendId } = useFriendContext();
   const { showToast } = useToastContext();
 
   const friend = useMemo(
     () => friends.find((item) => item.id === Number(params.friendId)),
     [friends, params.friendId],
   );
+
+  useEffect(() => {
+    const id = Number(params.friendId);
+    if (!Number.isNaN(id)) {
+      addSelectedFriendId(id);
+    }
+  }, [params.friendId, addSelectedFriendId]);
 
   if (!friend) {
     return (
