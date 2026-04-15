@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router";
 import Icon from "./Icon.jsx";
+import logo from "../../assets/logo.png";
 
 const navItems = [
   {
@@ -22,13 +23,16 @@ const navItems = [
 
 export default function Navbar() {
   return (
-    <header className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link to="/" className="text-lg font-semibold text-slate-800">
-          KeenKeeper
+    <header className="border-b border-slate-200 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <Link to="/" className="inline-flex items-center gap-2">
+          <img src={logo} alt="KeenKeeper logo" className="h-7 w-7 object-contain" />
+          <span className="text-lg font-semibold tracking-tight text-slate-800">
+            KeenKeeper
+          </span>
         </Link>
 
-        <nav className="flex items-center gap-2 text-sm">
+        <nav className="flex items-center gap-1 text-sm">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -36,10 +40,10 @@ export default function Navbar() {
               end={item.end}
               className={({ isActive }) =>
                 [
-                  "inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 transition",
+                  "inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 font-medium transition",
                   isActive
-                    ? "border-[#285846] bg-[#285846] text-white"
-                    : "border-transparent text-slate-500 hover:border-slate-200 hover:bg-slate-50",
+                    ? "border-[#285846] bg-[#285846] text-white shadow-sm"
+                    : "border-transparent text-slate-500 hover:border-slate-200 hover:bg-slate-50 hover:text-slate-700",
                 ].join(" ")
               }
             >

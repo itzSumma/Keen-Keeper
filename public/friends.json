@@ -1,98 +1,98 @@
 [
   {
     "id": 1,
-    "name": "David Kim",
-    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 22,
-    "tag": "WORK",
-    "status": "almost due"
+    "name": "Aisha Patel",
+    "picture": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80",
+    "email": "aisha.patel@example.com",
+    "days_since_contact": 18,
+    "status": "almost due",
+    "tags": ["work", "mentor"],
+    "bio": "Former project lead who helped me transition into product design. We usually catch up over coffee.",
+    "goal": 21,
+    "next_due_date": "2026-04-18"
   },
   {
     "id": 2,
     "name": "Emma Wilson",
     "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 15,
-    "tag": "FAMILY",
-    "status": "overdue"
+    "email": "emma.wilson@example.com",
+    "days_since_contact": 62,
+    "status": "overdue",
+    "tags": ["family", "close friend"],
+    "bio": "My cousin and favorite accountability partner. We plan monthly check-ins but both get busy.",
+    "goal": 30,
+    "next_due_date": "2026-02-27"
   },
   {
     "id": 3,
     "name": "Lisa Nakamura",
-    "picture": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 12,
-    "tag": "WORK",
-    "status": "overdue"
+    "picture": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+    "email": "lisa.nakamura@example.com",
+    "days_since_contact": 9,
+    "status": "on-track",
+    "tags": ["college", "travel buddy"],
+    "bio": "We met in university and still do one trip together every year, usually around spring.",
+    "goal": 14,
+    "next_due_date": "2026-04-20"
   },
   {
     "id": 4,
-    "name": "James Wright",
-    "picture": "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 7,
-    "tag": "TRAVEL",
-    "status": "family"
+    "name": "Olivia Martinez",
+    "picture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80",
+    "email": "olivia.martinez@example.com",
+    "days_since_contact": 26,
+    "status": "almost due",
+    "tags": ["startup", "book club"],
+    "bio": "We co-host a small book circle for founders and swap notes every couple of weeks.",
+    "goal": 28,
+    "next_due_date": "2026-04-17"
   },
   {
     "id": 5,
-    "name": "David Kim",
-    "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 24,
-    "tag": "WORK",
-    "status": "overdue"
+    "name": "Tom Baker",
+    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+    "email": "tom.baker@example.com",
+    "days_since_contact": 41,
+    "status": "overdue",
+    "tags": ["neighbor", "running"],
+    "bio": "My weekend running partner from the neighborhood. We missed our last two planned runs.",
+    "goal": 21,
+    "next_due_date": "2026-04-05"
   },
   {
     "id": 6,
-    "name": "Emma Wilson",
-    "picture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 10,
-    "tag": "FAMILY",
-    "status": "on-track"
+    "name": "Ryan O'Brien",
+    "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+    "email": "ryan.obrien@example.com",
+    "days_since_contact": 6,
+    "status": "on-track",
+    "tags": ["engineering", "gaming"],
+    "bio": "We collaborate on open-source side projects and keep in touch through weekly async updates.",
+    "goal": 10,
+    "next_due_date": "2026-04-19"
   },
   {
     "id": 7,
-    "name": "Lisa Nakamura",
-    "picture": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 18,
-    "tag": "WORK",
-    "status": "on-track"
+    "name": "Sarah Chen",
+    "picture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
+    "email": "sarah.chen@example.com",
+    "days_since_contact": 14,
+    "status": "almost due",
+    "tags": ["design", "community"],
+    "bio": "We volunteer at local design meetups and share speaker prep notes before each event.",
+    "goal": 15,
+    "next_due_date": "2026-04-16"
   },
   {
     "id": 8,
-    "name": "James Wright",
+    "name": "Marcus Johnson",
     "picture": "https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 8,
-    "tag": "TRAVEL",
-    "status": "friend"
-  },
-  {
-    "id": 9,
-    "name": "David Kim",
-    "picture": "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 20,
-    "tag": "WORK",
-    "status": "almost due"
-  },
-  {
-    "id": 10,
-    "name": "Emma Wilson",
-    "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 17,
-    "tag": "FAMILY",
-    "status": "overdue"
-  },
-  {
-    "id": 11,
-    "name": "Lisa Nakamura",
-    "picture": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 16,
-    "tag": "WORK",
-    "status": "overdue"
-  },
-  {
-    "id": 12,
-    "name": "James Wright",
-    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
-    "days_since_contact": 6,
-    "tag": "TRAVEL",
-    "status": "on-track"
+    "email": "marcus.johnson@example.com",
+    "days_since_contact": 11,
+    "status": "on-track",
+    "tags": ["high school", "basketball"],
+    "bio": "We grew up on the same street and still catch games together when schedules line up.",
+    "goal": 18,
+    "next_due_date": "2026-04-22"
   }
 ]
