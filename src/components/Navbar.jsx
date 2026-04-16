@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router";
 import { AiOutlineHome } from "react-icons/ai";
 import { RiTimeLine } from "react-icons/ri";
 import { IoStatsChart } from "react-icons/io5";
-import logo from "../../assets/logo.png";
 
 const navItems = [
   {
@@ -28,7 +27,6 @@ export default function Navbar() {
     <header className="border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link to="/" className="inline-flex items-center gap-2">
-         
           <span className="text-3xl font-semibold tracking-tight text-slate-800">
             Keen<span className="text-[#285846]">Keeper</span>
           </span>
