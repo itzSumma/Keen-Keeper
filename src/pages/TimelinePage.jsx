@@ -30,10 +30,11 @@ export default function TimelinePage() {
   const { timeline, friends, selectedFriendIds } = useFriendContext();
 
   const filteredEvents = useMemo(() => {
-    const selectedOnly =
-      selectedFriendIds.length > 0
-        ? timeline.filter((event) => selectedFriendIds.includes(event.friendId))
-        : timeline;
+    if (selectedFriendIds.length === 0) {
+      return [];
+    }
+
+    const selectedOnly = timeline.filter((event) => selectedFriendIds.includes(event.friendId));
 
     if (filter === "all") {
       return selectedOnly;
@@ -58,7 +59,11 @@ export default function TimelinePage() {
           Showing interactions for{" "}
           <span className="font-semibold">{selectedFriendNames.join(", ")}</span>
         </p>
-      ) : null}
+      ) : (
+        <p className="mt-2 text-sm text-slate-500">
+          No data yet. Select one or more friend cards first, then log Call, Text, or Video entries.
+        </p>
+      )}
 
       <div className="mt-5">
         <label htmlFor="timeline-filter" className="sr-only">
@@ -80,7 +85,9 @@ export default function TimelinePage() {
       <div className="mt-4 space-y-2.5">
         {filteredEvents.length === 0 ? (
           <p className="rounded-md border border-slate-200 bg-slate-50 px-4 py-6 text-sm text-slate-500">
-            No Call/Text/Video entries found for the current selection.
+            {selectedFriendIds.length === 0
+              ? "No timeline data to show yet for the current view."
+              : "No Call/Text/Video entries found for the current selection."}
           </p>
         ) : null}
         {filteredEvents.map((event) => (

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { useFriendContext } from "../context/FriendContext.jsx";
 
@@ -8,7 +9,33 @@ const COLORS = {
 };
 
 export default function StatsPage() {
-  const { interactionCounts } = useFriendContext();
+  const { timeline, friends, selectedFriendIds } = useFriendContext();
+
+  const selectedFriendNames = useMemo(
+    () =>
+      friends
+        .filter((item) => selectedFriendIds.includes(item.id))
+        .map((item) => item.name),
+    [friends, selectedFriendIds],
+  );
+
+  const interactionCounts = useMemo(
+    () =>
+      timeline.reduce(
+        (acc, item) => {
+          if (!selectedFriendIds.includes(item.friendId)) {
+            return acc;
+          }
+
+          if (item.type in acc) {
+            acc[item.type] += 1;
+          }
+          return acc;
+        },
+        { call: 0, text: 0, video: 0 },
+      ),
+    [timeline, selectedFriendIds],
+  );
 
   const data = [
     { name: "Text", value: interactionCounts.text, key: "text" },
@@ -16,46 +43,68 @@ export default function StatsPage() {
     { name: "Video", value: interactionCounts.video, key: "video" },
   ];
 
+  const hasSelection = selectedFriendIds.length > 0;
+  const hasData = data.some((item) => item.value > 0);
+
   return (
     <section className="mx-auto w-full max-w-5xl">
       <h1 className="text-5xl font-semibold tracking-tight text-slate-800">Friendship Analytics</h1>
+      {selectedFriendNames.length > 0 ? (
+        <p className="mt-2 text-sm text-slate-500">
+          Showing analytics for <span className="font-semibold">{selectedFriendNames.join(", ")}</span>
+        </p>
+      ) : (
+        <p className="mt-2 text-sm text-slate-500">
+          No data yet. Select one or more friend cards first, then log Call, Text, or Video entries.
+        </p>
+      )}
 
       <article className="mt-6 rounded-md border border-slate-200 bg-white px-6 py-5 shadow-sm">
         <h2 className="text-sm font-medium text-slate-600">By Interaction Type</h2>
 
         <div className="mt-6 h-64 w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={data}
-                cx="50%"
-                cy="50%"
-                dataKey="value"
-                innerRadius={58}
-                outerRadius={82}
-                paddingAngle={3}
-                stroke="#ffffff"
-                strokeWidth={3}
-              >
-                {data.map((entry) => (
-                  <Cell key={entry.key} fill={COLORS[entry.key]} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
+          {hasSelection && hasData ? (
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={data}
+                  cx="50%"
+                  cy="50%"
+                  dataKey="value"
+                  innerRadius={58}
+                  outerRadius={82}
+                  paddingAngle={3}
+                  stroke="#ffffff"
+                  strokeWidth={3}
+                >
+                  {data.map((entry) => (
+                    <Cell key={entry.key} fill={COLORS[entry.key]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="flex h-full items-center justify-center rounded-md border border-dashed border-slate-200 bg-slate-50 px-4 text-center text-sm text-slate-500">
+              {hasSelection
+                ? "No interaction stats available for the current selection."
+                : "Select a friend card first to see analytics here."}
+            </div>
+          )}
         </div>
 
-        <div className="mt-2 flex flex-wrap items-center justify-center gap-6">
-          {data.map((item) => (
-            <div key={item.key} className="flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: COLORS[item.key] }} />
-              <span className="text-xs text-slate-500">
-                {item.name}: {item.value}
-              </span>
-            </div>
-          ))}
-        </div>
+        {hasSelection && hasData ? (
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-6">
+            {data.map((item) => (
+              <div key={item.key} className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: COLORS[item.key] }} />
+                <span className="text-xs text-slate-500">
+                  {item.name}: {item.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </article>
     </section>
   );
