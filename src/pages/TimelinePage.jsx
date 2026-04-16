@@ -49,14 +49,14 @@ export default function TimelinePage() {
 
   return (
     <section className="rounded-md border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-      <h1 className="text-5xl font-semibold tracking-tight text-slate-800">Timeline</h1>
+      <h1 className="text-5xl font-semibold tracking-tight text-slate-900">Timeline</h1>
       {selectedFriendNames.length > 0 ? (
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-md text-slate-500">
           Showing interactions for{" "}
           <span className="font-semibold">{selectedFriendNames.join(", ")}</span>
         </p>
       ) : (
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-md text-slate-500">
           No data yet. Press Call, Text, or Video on any friend card first.
         </p>
       )}
@@ -69,7 +69,7 @@ export default function TimelinePage() {
           id="timeline-filter"
           value={filter}
           onChange={(event) => setFilter(event.target.value)}
-          className="h-10 min-w-52 rounded-md border border-slate-200 bg-white px-3 text-sm text-slate-600 outline-none transition focus:border-[#285846]"
+          className="h-10 min-w-52 rounded-md border border-slate-200 bg-white px-3 text-md text-slate-600 outline-none transition focus:border-[#285846]"
         >
           <option value="all">All interactions</option>
           <option value="call">Call</option>
@@ -80,7 +80,7 @@ export default function TimelinePage() {
 
       <div className="mt-4 space-y-2.5">
         {filteredEvents.length === 0 ? (
-          <p className="rounded-md border border-slate-200 bg-slate-50 px-4 py-6 text-sm text-slate-500">
+          <p className="rounded-md border border-slate-200 bg-slate-50 px-4 py-6 text-md text-slate-500">
             {timeline.length === 0
               ? "No timeline data yet. Log Call, Text, or Video from a friend card first."
               : "No Call/Text/Video entries found for the current filter."}
@@ -95,8 +95,8 @@ export default function TimelinePage() {
               <img src={EVENT_ICONS[event.type]} alt="" className="h-4 w-4 object-contain" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-700">{event.title}</p>
-              <p className="mt-0.5 text-xs text-slate-400">{formatDate(event.date)}</p>
+              <p className="text-md font-semibold text-slate-700">{event.title}</p>
+              <p className="mt-0.5 text-md text-slate-400">{formatDate(event.date)}</p>
             </div>
           </article>
         ))}

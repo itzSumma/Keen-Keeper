@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 
 const STATUS_META = {
-  overdue: "bg-rose-100 text-rose-600",
-  "almost due": "bg-amber-100 text-amber-700",
-  "on-track": "bg-emerald-100 text-emerald-700",
+  overdue: "bg-rose-800 text-white",
+  "almost due": "bg-amber-800 text-white",
+  "on-track": "bg-emerald-800 text-white",
 };
 
 function getAvatarSourceSet(url) {
@@ -36,7 +36,7 @@ function getAvatarSourceSet(url) {
 
 function Tag({ children }) {
   return (
-    <span className="rounded-full bg-lime-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-lime-700">
+    <span className="rounded-full bg-lime-200 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-green-800">
       {children}
     </span>
   );
@@ -48,8 +48,7 @@ export default function FriendCard({ friend }) {
   return (
     <Link
       to={`/friends/${friend.id}`}
-      className="block rounded-lg border border-slate-200 bg-white px-5 py-6 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-    >
+      className="block rounded-lg border border-slate-200 bg-white px-5 py-6 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <img
         src={avatar.src}
         srcSet={avatar.srcSet}
@@ -59,10 +58,14 @@ export default function FriendCard({ friend }) {
         loading="lazy"
         decoding="async"
       />
-      <h3 className="mt-4 text-base font-semibold text-slate-800">{friend.name}</h3>
-      <p className="mt-1 text-xs text-slate-400">{friend.days_since_contact}d ago</p>
+      <h3 className="mt-4 text-lg font-semibold text-slate-800">
+        {friend.name}
+      </h3>
+      <p className="mt-1 text-md text-slate-400">
+        {friend.days_since_contact}d ago
+      </p>
 
-      <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-md">
         {friend.tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
@@ -70,10 +73,9 @@ export default function FriendCard({ friend }) {
 
       <div className="mt-2 flex justify-center">
         <span
-          className={`rounded-full px-2.5 py-1 text-[10px] font-semibold ${
+          className={`rounded-full px-2.5 py-1 text-md font-semibold ${
             STATUS_META[friend.status]
-          }`}
-        >
+          }`}>
           {friend.status}
         </span>
       </div>

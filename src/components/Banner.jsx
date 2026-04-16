@@ -8,7 +8,7 @@ export default function Banner({ metrics }) {
         <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
           Friends to keep close in your life
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-6 text-slate-400">
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-6 text-slate-500">
           Your personal shelf of meaningful connections. Browse, tend, and
           nurture the relationships that matter most.
         </p>

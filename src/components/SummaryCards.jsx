@@ -2,7 +2,7 @@ function MetricCard({ value, label }) {
   return (
     <article className="rounded-lg border border-slate-200 bg-white px-6 py-7 text-center shadow-sm">
       <p className="text-4xl font-semibold text-[#285846]">{value}</p>
-      <p className="mt-2 text-sm text-slate-500">{label}</p>
+      <p className="mt-2 text-lg text-slate-500">{label}</p>
     </article>
   );
 }

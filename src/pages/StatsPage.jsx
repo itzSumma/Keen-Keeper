@@ -45,17 +45,17 @@ export default function StatsPage() {
     <section className="mx-auto w-full max-w-5xl">
       <h1 className="text-5xl font-semibold tracking-tight text-slate-800">Friendship Analytics</h1>
       {selectedFriendNames.length > 0 ? (
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-md text-slate-600">
           Showing analytics for <span className="font-semibold">{selectedFriendNames.join(", ")}</span>
         </p>
       ) : (
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-md text-slate-600">
           No data yet. Press Call, Text, or Video on any friend card first.
         </p>
       )}
 
-      <article className="mt-6 rounded-md border border-slate-200 bg-white px-6 py-5 shadow-sm">
-        <h2 className="text-sm font-medium text-slate-600">By Interaction Type</h2>
+      <article className="mt-6 rounded-md border border-slate-300 bg-white px-6 py-5 shadow-sm">
+        <h2 className="text-md font-medium text-slate-600">By Interaction Type</h2>
 
         <div className="mt-6 h-64 w-full">
           {hasData ? (
@@ -80,7 +80,7 @@ export default function StatsPage() {
               </PieChart>
             </ResponsiveContainer>
           ) : (
-            <div className="flex h-full items-center justify-center rounded-md border border-dashed border-slate-200 bg-slate-50 px-4 text-center text-sm text-slate-500">
+            <div className="flex h-full items-center justify-center rounded-md border border-dashed border-slate-200 bg-slate-50 px-4 text-center text-md text-slate-500">
               No interaction stats yet. Log Call, Text, or Video from a friend card first.
             </div>
           )}
@@ -91,7 +91,7 @@ export default function StatsPage() {
             {data.map((item) => (
               <div key={item.key} className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: COLORS[item.key] }} />
-                <span className="text-xs text-slate-500">
+                <span className="text-md text-slate-500">
                   {item.name}: {item.value}
                 </span>
               </div>
