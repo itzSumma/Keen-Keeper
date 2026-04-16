@@ -91,7 +91,7 @@ export default function StatsPage() {
             {data.map((item) => (
               <div key={item.key} className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: COLORS[item.key] }} />
-                <span className="text-md text-slate-500">
+                <span className="text-md text-slate-600">
                   {item.name}: {item.value}
                 </span>
               </div>

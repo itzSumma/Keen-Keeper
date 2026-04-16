@@ -9,6 +9,10 @@ const FriendContext = createContext(null);
 
 const STATUS_VALUES = ["overdue", "almost due", "on-track"];
 
+function getInitialFriends() {
+  return getFriendsFromLocalDB().map(normalizeFriend);
+}
+
 function parseDate(value) {
   const parsed = new Date(value);
   return Number.isNaN(parsed.valueOf()) ? null : parsed;
@@ -26,9 +30,9 @@ function normalizeFriend(friend) {
 }
 
 export function FriendProvider({ children }) {
-  const [friends, setFriends] = useState(() => getFriendsFromLocalDB().map(normalizeFriend));
+  const [friends, setFriends] = useState(getInitialFriends);
   const [timeline, setTimeline] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => getInitialFriends().length === 0);
 
   useEffect(() => {
     let cancelled = false;
