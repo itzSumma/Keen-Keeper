@@ -3,6 +3,9 @@ import { Link, useParams } from "react-router";
 import Icon from "../components/Icon.jsx";
 import { useFriendContext } from "../context/FriendContext.jsx";
 import { useToastContext } from "../context/ToastContext.jsx";
+import callIcon from "../../assets/call.png";
+import textIcon from "../../assets/text.png";
+import videoIcon from "../../assets/video.png";
 
 const STATUS_META = {
   overdue: "bg-rose-100 text-rose-600",
@@ -14,10 +17,10 @@ const QUICK_ACTIONS = [
   {
     type: "call",
     label: "Call",
-    icon: "M2.25 4.5A2.25 2.25 0 0 1 4.5 2.25h2.31a1.5 1.5 0 0 1 1.46 1.14l.64 2.56a1.5 1.5 0 0 1-.58 1.59l-1.39 1a11.35 11.35 0 0 0 5.52 5.52l1-1.39a1.5 1.5 0 0 1 1.59-.58l2.56.64a1.5 1.5 0 0 1 1.14 1.46v2.31A2.25 2.25 0 0 1 19.5 21.75h-.75C9.97 21.75 2.25 14.03 2.25 5.25V4.5Z",
+    icon: callIcon,
   },
-  { type: "text", label: "Text", icon: "M3.75 5.25h16.5v11.25H9l-5.25 3v-14.25Z" },
-  { type: "video", label: "Video", icon: "M3.75 7.5h10.5v9H3.75v-9Zm10.5 3.75 6-3.75v9l-6-3.75" },
+  { type: "text", label: "Text", icon: textIcon },
+  { type: "video", label: "Video", icon: videoIcon },
 ];
 
 function formatDueDate(value) {
@@ -183,7 +186,7 @@ export default function FriendDetailsPage() {
                 onClick={() => handleQuickCheckIn(action.type)}
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-200 px-4 py-3 text-sm text-slate-700 transition hover:bg-slate-50"
               >
-                <Icon path={action.icon} className="size-4" />
+                <img src={action.icon} alt="" className="h-5 w-5 object-contain" />
                 {action.label}
               </button>
             ))}

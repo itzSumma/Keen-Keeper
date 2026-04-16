@@ -1,11 +1,13 @@
 import { useMemo, useState } from "react";
-import Icon from "../components/Icon.jsx";
 import { useFriendContext } from "../context/FriendContext.jsx";
+import callIcon from "../../assets/call.png";
+import textIcon from "../../assets/text.png";
+import videoIcon from "../../assets/video.png";
 
 const EVENT_ICONS = {
-  call: "M2.25 4.5A2.25 2.25 0 0 1 4.5 2.25h2.31a1.5 1.5 0 0 1 1.46 1.14l.64 2.56a1.5 1.5 0 0 1-.58 1.59l-1.39 1a11.35 11.35 0 0 0 5.52 5.52l1-1.39a1.5 1.5 0 0 1 1.59-.58l2.56.64a1.5 1.5 0 0 1 1.14 1.46v2.31A2.25 2.25 0 0 1 19.5 21.75h-.75C9.97 21.75 2.25 14.03 2.25 5.25V4.5Z",
-  text: "M3.75 5.25h16.5v11.25H9l-5.25 3v-14.25Z",
-  video: "M3.75 7.5h10.5v9H3.75v-9Zm10.5 3.75 6-3.75v9l-6-3.75",
+  call: callIcon,
+  text: textIcon,
+  video: videoIcon,
 };
 
 function formatDate(value) {
@@ -90,7 +92,7 @@ export default function TimelinePage() {
             className="flex items-start gap-3 rounded-md border border-slate-200 bg-white px-3 py-3"
           >
             <div className="mt-0.5 rounded-full bg-slate-100 p-1.5 text-slate-600">
-              <Icon path={EVENT_ICONS[event.type]} className="size-3.5" />
+              <img src={EVENT_ICONS[event.type]} alt="" className="h-4 w-4 object-contain" />
             </div>
             <div>
               <p className="text-sm font-semibold text-slate-700">{event.title}</p>

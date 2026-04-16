@@ -4,8 +4,8 @@ import FriendCard from "./FriendCard.jsx";
 function LoadingGrid() {
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-center gap-2 text-sm font-medium text-[#285846]">
-        <span className="loading loading-spinner loading-md text-[#285846]" />
+      <div className="flex items-center justify-center gap-2 text-md font-medium text-[#285846]">
+        <span className="loading loading-spinner loading-lg text-[#285846]" />
         <span>Loading friends...</span>
       </div>
 
