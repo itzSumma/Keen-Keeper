@@ -9,24 +9,20 @@ const COLORS = {
 };
 
 export default function StatsPage() {
-  const { timeline, friends, selectedFriendIds } = useFriendContext();
+  const { timeline, friends } = useFriendContext();
 
   const selectedFriendNames = useMemo(
     () =>
       friends
-        .filter((item) => selectedFriendIds.includes(item.id))
+        .filter((item) => timeline.some((event) => event.friendId === item.id))
         .map((item) => item.name),
-    [friends, selectedFriendIds],
+    [friends, timeline],
   );
 
   const interactionCounts = useMemo(
     () =>
       timeline.reduce(
         (acc, item) => {
-          if (!selectedFriendIds.includes(item.friendId)) {
-            return acc;
-          }
-
           if (item.type in acc) {
             acc[item.type] += 1;
           }
@@ -34,7 +30,7 @@ export default function StatsPage() {
         },
         { call: 0, text: 0, video: 0 },
       ),
-    [timeline, selectedFriendIds],
+    [timeline],
   );
 
   const data = [
@@ -43,7 +39,6 @@ export default function StatsPage() {
     { name: "Video", value: interactionCounts.video, key: "video" },
   ];
 
-  const hasSelection = selectedFriendIds.length > 0;
   const hasData = data.some((item) => item.value > 0);
 
   return (
@@ -55,7 +50,7 @@ export default function StatsPage() {
         </p>
       ) : (
         <p className="mt-2 text-sm text-slate-500">
-          No data yet. Select one or more friend cards first, then log Call, Text, or Video entries.
+          No data yet. Press Call, Text, or Video on any friend card first.
         </p>
       )}
 
@@ -63,7 +58,7 @@ export default function StatsPage() {
         <h2 className="text-sm font-medium text-slate-600">By Interaction Type</h2>
 
         <div className="mt-6 h-64 w-full">
-          {hasSelection && hasData ? (
+          {hasData ? (
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -86,14 +81,12 @@ export default function StatsPage() {
             </ResponsiveContainer>
           ) : (
             <div className="flex h-full items-center justify-center rounded-md border border-dashed border-slate-200 bg-slate-50 px-4 text-center text-sm text-slate-500">
-              {hasSelection
-                ? "No interaction stats available for the current selection."
-                : "Select a friend card first to see analytics here."}
+              No interaction stats yet. Log Call, Text, or Video from a friend card first.
             </div>
           )}
         </div>
 
-        {hasSelection && hasData ? (
+        {hasData ? (
           <div className="mt-2 flex flex-wrap items-center justify-center gap-6">
             {data.map((item) => (
               <div key={item.key} className="flex items-center gap-2">

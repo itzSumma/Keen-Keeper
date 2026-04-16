@@ -2,22 +2,12 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import {
   getFriendsFromLocalDB,
-  getTimelineFromLocalDB,
   saveFriendsToLocalDB,
-  saveTimelineToLocalDB,
 } from "../utils/localDB.js";
 
 const FriendContext = createContext(null);
 
 const STATUS_VALUES = ["overdue", "almost due", "on-track"];
-
-const SEED_TIMELINE = [
-  { id: "seed-1", type: "call", friendId: 2, title: "Call with Emma Wilson", date: "2026-03-29T09:30:00.000Z" },
-  { id: "seed-2", type: "text", friendId: 6, title: "Text with Ryan O'Brien", date: "2026-03-28T15:45:00.000Z" },
-  { id: "seed-3", type: "video", friendId: 4, title: "Video with Olivia Martinez", date: "2026-03-27T12:20:00.000Z" },
-  { id: "seed-4", type: "call", friendId: 1, title: "Call with Aisha Patel", date: "2026-03-26T18:00:00.000Z" },
-  { id: "seed-5", type: "video", friendId: 8, title: "Video with Marcus Johnson", date: "2026-03-25T07:40:00.000Z" },
-];
 
 function parseDate(value) {
   const parsed = new Date(value);
@@ -37,11 +27,7 @@ function normalizeFriend(friend) {
 
 export function FriendProvider({ children }) {
   const [friends, setFriends] = useState(() => getFriendsFromLocalDB().map(normalizeFriend));
-  const [selectedFriendIds, setSelectedFriendIds] = useState([]);
-  const [timeline, setTimeline] = useState(() => {
-    const stored = getTimelineFromLocalDB();
-    return stored.length > 0 ? stored : SEED_TIMELINE;
-  });
+  const [timeline, setTimeline] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -71,10 +57,6 @@ export function FriendProvider({ children }) {
       cancelled = true;
     };
   }, []);
-
-  useEffect(() => {
-    saveTimelineToLocalDB(timeline);
-  }, [timeline]);
 
   const sortedTimeline = useMemo(
     () =>
@@ -130,16 +112,11 @@ export function FriendProvider({ children }) {
       type,
       date: new Date().toISOString(),
       title: `${label} with ${friend.name}`,
+      source: "user",
     };
 
     setTimeline((current) => [newEntry, ...current]);
     return newEntry;
-  }
-
-  function addSelectedFriendId(friendId) {
-    setSelectedFriendIds((current) =>
-      current.includes(friendId) ? current : [...current, friendId],
-    );
   }
 
   return (
@@ -151,8 +128,6 @@ export function FriendProvider({ children }) {
         timeline: sortedTimeline,
         interactionCounts,
         addInteraction,
-        selectedFriendIds,
-        addSelectedFriendId,
       }}
     >
       {children}

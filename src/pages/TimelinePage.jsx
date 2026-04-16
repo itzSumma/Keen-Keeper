@@ -27,28 +27,22 @@ function formatDate(value) {
 
 export default function TimelinePage() {
   const [filter, setFilter] = useState("all");
-  const { timeline, friends, selectedFriendIds } = useFriendContext();
+  const { timeline, friends } = useFriendContext();
 
   const filteredEvents = useMemo(() => {
-    if (selectedFriendIds.length === 0) {
-      return [];
-    }
-
-    const selectedOnly = timeline.filter((event) => selectedFriendIds.includes(event.friendId));
-
     if (filter === "all") {
-      return selectedOnly;
+      return timeline;
     }
 
-    return selectedOnly.filter((event) => event.type === filter);
-  }, [filter, timeline, selectedFriendIds]);
+    return timeline.filter((event) => event.type === filter);
+  }, [filter, timeline]);
 
   const selectedFriendNames = useMemo(
     () =>
       friends
-        .filter((item) => selectedFriendIds.includes(item.id))
+        .filter((item) => timeline.some((event) => event.friendId === item.id))
         .map((item) => item.name),
-    [friends, selectedFriendIds],
+    [friends, timeline],
   );
 
   return (
@@ -61,7 +55,7 @@ export default function TimelinePage() {
         </p>
       ) : (
         <p className="mt-2 text-sm text-slate-500">
-          No data yet. Select one or more friend cards first, then log Call, Text, or Video entries.
+          No data yet. Press Call, Text, or Video on any friend card first.
         </p>
       )}
 
@@ -85,9 +79,9 @@ export default function TimelinePage() {
       <div className="mt-4 space-y-2.5">
         {filteredEvents.length === 0 ? (
           <p className="rounded-md border border-slate-200 bg-slate-50 px-4 py-6 text-sm text-slate-500">
-            {selectedFriendIds.length === 0
-              ? "No timeline data to show yet for the current view."
-              : "No Call/Text/Video entries found for the current selection."}
+            {timeline.length === 0
+              ? "No timeline data yet. Log Call, Text, or Video from a friend card first."
+              : "No Call/Text/Video entries found for the current filter."}
           </p>
         ) : null}
         {filteredEvents.map((event) => (
