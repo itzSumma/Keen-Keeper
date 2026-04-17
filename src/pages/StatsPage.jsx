@@ -54,7 +54,7 @@ export default function StatsPage() {
         </p>
       )}
 
-      <article className="mt-6 rounded-md border border-slate-300 bg-white px-6 py-5 shadow-sm">
+      <article className="mt-6 rounded-md border border-slate-300 bg-white px-6 py-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-[#285846]/20 hover:shadow-md active:-translate-y-0.5 active:border-[#285846]/20 active:shadow-sm">
         <h2 className="text-md font-medium text-slate-600">By Interaction Type</h2>
 
         <div className="mt-6 h-64 w-full">

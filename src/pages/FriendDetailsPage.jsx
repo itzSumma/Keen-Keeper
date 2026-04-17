@@ -55,7 +55,7 @@ function getAvatarSource(url) {
 
 function StatCard({ value, label }) {
   return (
-    <article className="rounded-md border border-slate-200 bg-white px-4 py-5 text-center shadow-md">
+    <article className="rounded-md border border-slate-200 bg-white px-4 py-5 text-center shadow-md transition duration-200 hover:-translate-y-1 hover:border-[#285846]/20 hover:shadow-lg active:-translate-y-0.5 active:border-[#285846]/20 active:shadow-md">
       <p className="text-4xl font-semibold tracking-tight text-[#285846]">{value}</p>
       <p className="mt-2 text-md text-slate-500">{label}</p>
     </article>
@@ -109,7 +109,7 @@ export default function FriendDetailsPage() {
   return (
     <section className="grid gap-4 lg:grid-cols-[260px_1fr]">
       <div className="space-y-3">
-        <article className="rounded-md border border-slate-200 bg-white px-6 py-6 text-center shadow-sm">
+        <article className="rounded-md border border-slate-200 bg-white px-6 py-6 text-center shadow-sm transition duration-200 hover:-translate-y-1 hover:border-[#285846]/20 hover:shadow-md active:-translate-y-0.5 active:border-[#285846]/20 active:shadow-sm">
           <img
             src={getAvatarSource(friend.picture)}
             alt={friend.name}
@@ -159,7 +159,7 @@ export default function FriendDetailsPage() {
           <StatCard value={formatDueDate(friend.next_due_date)} label="Next Due" />
         </div>
 
-        <article className="rounded-md border border-slate-200 bg-white p-4 shadow-sm">
+        <article className="rounded-md border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[#285846]/20 hover:shadow-md active:-translate-y-0.5 active:border-[#285846]/20 active:shadow-sm">
           <div className="flex items-start justify-between gap-3">
             <div>
               <h2 className="text-md font-semibold text-slate-700">Relationship Goal</h2>
@@ -176,7 +176,7 @@ export default function FriendDetailsPage() {
           </div>
         </article>
 
-        <article className="rounded-md border border-slate-200 bg-white p-4 shadow-sm">
+        <article className="rounded-md border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[#285846]/20 hover:shadow-md active:-translate-y-0.5 active:border-[#285846]/20 active:shadow-sm">
           <h2 className="text-lg font-semibold text-slate-700">Quick Check-In</h2>
           <div className="mt-3 grid gap-3 sm:grid-cols-3">
             {QUICK_ACTIONS.map((action) => (

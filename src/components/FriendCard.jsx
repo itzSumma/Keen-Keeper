@@ -48,7 +48,7 @@ export default function FriendCard({ friend }) {
   return (
     <Link
       to={`/friends/${friend.id}`}
-      className="block rounded-lg border border-slate-200 bg-white px-5 py-6 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      className="block rounded-lg border border-slate-200 bg-white px-5 py-6 text-center shadow-sm transition duration-200 hover:-translate-y-1 hover:border-[#285846]/20 hover:shadow-lg active:-translate-y-0.5 active:border-[#285846]/20 active:shadow-md">
       <img
         src={avatar.src}
         srcSet={avatar.srcSet}

@@ -48,7 +48,7 @@ export default function TimelinePage() {
   );
 
   return (
-    <section className="rounded-md border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+    <section className="rounded-md border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:border-[#285846]/20 hover:shadow-md active:border-[#285846]/20 active:shadow-sm sm:p-6">
       <h1 className="text-5xl font-semibold tracking-tight text-slate-900">Timeline</h1>
       {selectedFriendNames.length > 0 ? (
         <p className="mt-2 text-md text-slate-500">
@@ -89,7 +89,7 @@ export default function TimelinePage() {
         {filteredEvents.map((event) => (
           <article
             key={event.id}
-            className="flex items-start gap-3 rounded-md border border-slate-200 bg-white px-3 py-3"
+            className="flex items-start gap-3 rounded-md border border-slate-200 bg-white px-3 py-3 transition duration-200 hover:-translate-y-0.5 hover:border-[#285846]/20 hover:shadow-sm active:-translate-y-0.5 active:border-[#285846]/20 active:shadow-sm"
           >
             <div className="mt-0.5 rounded-full bg-slate-100 p-1.5 text-slate-600">
               <img src={EVENT_ICONS[event.type]} alt="" className="h-4 w-4 object-contain" />
