@@ -1,15 +1,22 @@
+import facebookIcon from "../../assets/facebook.png";
+import instagramIcon from "../../assets/instagram.png";
+import twitterIcon from "../../assets/twitter.png";
+
 const socialIcons = [
   {
     name: "Facebook",
-    src: "/assets/facebook.png",
+    href: "https://www.facebook.com/",
+    src: facebookIcon,
   },
   {
     name: "Instagram",
-    src: "/assets/instagram.png",
+    href: "https://www.instagram.com/",
+    src: instagramIcon,
   },
   {
     name: "Twitter",
-    src: "/assets/twitter.png",
+    href: "https://twitter.com/",
+    src: twitterIcon,
   },
 ];
 
@@ -31,9 +38,11 @@ export default function Footer() {
             {socialIcons.map((item) => (
               <a
                 key={item.name}
-                href="/"
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
                 aria-label={item.name}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white transition hover:-translate-y-0.5 hover:bg-slate-100"
               >
                 <img src={item.src} alt={item.name} className="h-5 w-5" />
               </a>
@@ -53,4 +62,3 @@ export default function Footer() {
     </footer>
   );
 }
-
