@@ -24,7 +24,7 @@ const navItems = [
 
 export default function Navbar() {
   return (
-    <header className="border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
         <Link to="/" className="inline-flex items-center gap-2">
           <span className="text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">
